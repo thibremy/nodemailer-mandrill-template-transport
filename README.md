@@ -16,7 +16,7 @@ const transport = nodemailer.createTransport(mandrillTemplateTransport({
   }
 }));
 
-// transform to mandrill options
+
 
 transport.sendMail({
   template_name: 'contact-form',
@@ -34,6 +34,8 @@ transport.sendMail({
   replyTo: 'test@tet.com',
   messageId: 'test',
 });
+
+// transform to mandrill options
 
 {
   template_name: 'contact-form',
