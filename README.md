@@ -1,66 +1,22 @@
-# nodemailer-mandrill-transport
+# nodemailer-mandrill-template-transport
 
-A Mandrill transport for Nodemailer.
+A Mandrill transport for Nodemailer, it's a mix beetween [nodemailer-mandrill-template-transport](https://github.com/RebelMail/nodemailer-mandrill-transport) and commons E-mail message fields
 
-[![Build Status](https://travis-ci.org/Rebelmail/nodemailer-mandrill-transport.svg?branch=sm-readme)](https://travis-ci.org/Rebelmail/nodemailer-mandrill-transport)
-[![NPM version](https://badge.fury.io/js/nodemailer-mandrill-transport.png)](http://badge.fury.io/js/nodemailer-mandrill-transport)
+This package is used to use "Mandrill.message#send-template".
 
 ## Example
 
 ```javascript
-'use strict';
+import nodemailer from 'nodemailer';
+import mandrillTemplateTransport from 'nodemailer-mandrill-template-transport';
 
-var nodemailer = require('nodemailer');
-
-var mandrillTransport = require('nodemailer-mandrill-transport');
-
-var transport = nodemailer.createTransport(mandrillTransport({
+const transport = nodemailer.createTransport(mandrillTemplateTransport({
   auth: {
     apiKey: 'key'
   }
 }));
 
-transport.sendMail({
-  from: 'sender@example.com',
-  to: 'user@example.com',
-  subject: 'Hello',
-  html: '<p>How are you?</p>'
-}, function(err, info) {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(info);
-  }
-});
-```
-
-## Using Mandrill API options
-
-
-
-```javascript
-transport.sendMail({
-   data: {
-      template_name: 'contact-form',
-      template_content: [],
-      subject: 'Hello',
-      from: 'bernie senders sender@example.com',
-      to: 'user@example.com, user2@example.com',
-      cc: 'cc@example.com, cc@example.com',
-      bcc: [
-        'foobar@blurdybloop.com', 
-        {
-          name: 'Майлер, Ноде',
-          address: 'foobar@blurdybloop.com'
-        }
-      ],
-      replyTo: 'test@tet.com',
-      messageId: 'test',
-    }
-}, /* ... */);
-```
-
-transform to 
+transform to mandrill options
 
 ```javascript
 
