@@ -8,7 +8,7 @@
     "email": "contact@thibremy.ninja",
     "url": "http://thibremy.ninja"
   },
-  "main": "./lib/index.js",
+  "main": "./lib/mandrill-template-transport.js",
   "scripts": {
     "clean": "rimraf lib",
     "build": "mkdirp lib && babel src -d lib",
