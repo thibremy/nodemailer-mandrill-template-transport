@@ -1,8 +1,8 @@
 # nodemailer-mandrill-template-transport
 
-A Mandrill transport for Nodemailer, it's a mix beetween [nodemailer-mandrill-template-transport](https://github.com/RebelMail/nodemailer-mandrill-transport) and commons E-mail message fields
+A Mandrill transport for Nodemailer, it's a mix beetween [nodemailer-mandrill-transport](https://github.com/RebelMail/nodemailer-mandrill-transport) and commons [E-mail message fields](https://github.com/nodemailer/nodemailer#e-mail-message-fields).
 
-This package is used to use "Mandrill.message#send-template".
+This package use "Mandrill.message#send-template".
 
 ## Example
 
@@ -16,13 +16,30 @@ const transport = nodemailer.createTransport(mandrillTemplateTransport({
   }
 }));
 
-transform to mandrill options
 
-```javascript
+
+transport.sendMail({
+  template_name: 'contact-form',
+  template_content: [],
+  subject: 'Hello',
+  from: 'bernie senders sender@example.com',
+  to: 'user@example.com, user2@example.com',
+  cc: 'cc@example.com, cc@example.com',
+  bcc: [
+    'foobar@blurdybloop.com', {
+      name: 'Майлер, Ноде',
+      address: 'foobar@blurdybloop.com'
+    }
+  ],
+  replyTo: 'test@tet.com',
+  messageId: 'test',
+});
+
+// transform to mandrill options
 
 {
   template_name: 'contact-form',
-  template_content: [],
+  template_content:[],
   message: {
     headers: {
       'Reply-To': 'test@tet.com'
@@ -58,5 +75,6 @@ transform to mandrill options
     }]
   }
 }
+
 
 ```
